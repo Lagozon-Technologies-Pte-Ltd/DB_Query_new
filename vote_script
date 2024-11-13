@@ -1,0 +1,5 @@
+CREATE TABLE lz_votes (
+    table_name VARCHAR PRIMARY KEY,
+    upvotes INT DEFAULT 0,
+    downvotes INT DEFAULT 0
+);

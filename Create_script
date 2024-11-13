@@ -1,0 +1,10 @@
+CREATE TABLE lz_feedbacks (
+    id SERIAL PRIMARY KEY,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_query TEXT,
+    sql_query TEXT,
+    department VARCHAR(255),
+    feedback_type VARCHAR(10),
+    table_name VARCHAR(255),
+    table_data TEXT
+);
