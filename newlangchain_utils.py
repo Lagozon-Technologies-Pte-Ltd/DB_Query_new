@@ -255,7 +255,7 @@ def insert_feedback(department,user_query, sql_query, table_name, data, feedback
     feedback_type = escape_single_quotes(feedback_type)
     feedback = escape_single_quotes(feedback)
     insert_query = f"""
-    INSERT INTO "Management".lz_feedbacks (department, user_query, sql_query, table_name, data, feedback_type, feedback)
+    INSERT INTO lz_feedbacks (department, user_query, sql_query, table_name, data, feedback_type, feedback)
     VALUES ('{department}', '{user_query}', '{sql_query}', '{table_name}', '{data}', '{feedback_type}', '{feedback}')
     """
     try:
@@ -273,7 +273,7 @@ def load_votes(table_name):
     session = Session()
     execute_query = f"""
     SELECT upvotes, downvotes 
-    FROM "Management".lz_votes 
+    FROM lz_votes 
     WHERE table_name = '{table_name}'
     """
     
@@ -292,7 +292,7 @@ def save_votes(table_name, votes):
     Session = sessionmaker(bind=engine)
     session = Session()
     execute_query = f"""
-INSERT INTO "Management".lz_votes (table_name, upvotes, downvotes) 
+INSERT INTO lz_votes (table_name, upvotes, downvotes) 
 VALUES ('{table_name}', {votes["upvotes"]}, {votes["downvotes"]})
 ON CONFLICT (table_name) 
 DO UPDATE SET 
